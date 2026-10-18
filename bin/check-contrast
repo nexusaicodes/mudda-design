@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+# Checks the theme's text/background pairs, in light and dark, against WCAG 2.2 AA. Exits
+# non-zero on any failure.
+require_relative "../lib/mudda_theme/palette"
+
+def luminance(hex)
+  hex.delete("#").scan(/../).map { |c| c.to_i(16) / 255.0 }
+    .map { |c| c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055)**2.4 }
+    .zip([ 0.2126, 0.7152, 0.0722 ]).sum { |c, w| c * w }
+end
+
+def contrast(a, b)
+  la, lb = [ luminance(a), luminance(b) ].sort.reverse
+  (la + 0.05) / (lb + 0.05)
+end
+
+# [foreground, background, minimum]. Ink and slate carry text, so they need 4.5:1 on every surface.
+# Brass and vermilion are accents: large labels, badges, lane marks and focus rings, held to the
+# 3:1 that large text and UI components need.
+PAIRS = [
+  [ :ink, :paper, 4.5 ], [ :ink, :paper_200, 4.5 ], [ :ink, :paper_300, 4.5 ],
+  [ :ink_muted, :paper, 4.5 ], [ :ink_muted, :paper_200, 4.5 ], [ :ink_muted, :paper_300, 4.5 ],
+  [ :paper, :ink, 4.5 ], [ :paper, :ink_muted, 4.5 ],
+  [ :brass, :paper, 3.0 ], [ :brass, :paper_200, 3.0 ], [ :paper, :brass, 3.0 ],
+  [ :vermilion, :paper, 3.0 ], [ :vermilion, :paper_200, 3.0 ], [ :paper, :vermilion, 3.0 ]
+].freeze
+
+failures = 0
+MuddaTheme::PALETTE.each do |scheme, palette|
+  PAIRS.each do |fg, bg, min|
+    ratio = contrast(palette.fetch(fg), palette.fetch(bg))
+    ok = ratio >= min
+    failures += 1 unless ok
+    puts format("%-5s %-6s %-10s on %-10s %5.2f:1 (needs %.1f)", ok ? "ok" : "FAIL", scheme, fg, bg, ratio, min)
+  end
+end
+
+exit(failures.zero? ? 0 : 1)

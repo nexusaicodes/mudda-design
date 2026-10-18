@@ -1,0 +1,23 @@
+/* mudda-theme: the manuscript look, light. Navy ink on cream paper, slate for quieter text, brass
+   for small labels, vermilion as the one accent. Surfaces are flat and told apart by hairlines;
+   corners are near-square.
+
+   Tokens are named by role, so dark.css flips every one of them under the same names. This file
+   is self-contained (no url(), no layers) and doubles as the static copy for public/ pages. */
+:root {
+  color-scheme: light;
+
+  --paper: #f1e6ce;
+  --paper-200: #e9dcc0;
+  --paper-300: #dfd0b0;
+  --ink: #1b2a4a;
+  --ink-muted: #46536e;
+  --brass: #8c6a2e;
+  --vermilion: #b3341c;
+  --hairline: rgb(27 42 74 / 0.2);
+
+  --face-body: "IBM Plex Sans", "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --face-display: Amiri, "Noto Naskh Arabic", Georgia, serif;
+
+  --corner: 3px;
+}

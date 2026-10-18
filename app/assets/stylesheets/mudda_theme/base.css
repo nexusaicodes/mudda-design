@@ -1,0 +1,27 @@
+/* mudda-theme: the page as a manuscript leaf. Flat paper and ink text, headings in Amiri, and
+   vermilion marking focus. It sits in the base layer, so any unlayered app rule wins. */
+@layer base {
+  /* html:root outranks a component kit's own :root background. */
+  html:root {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--face-display);
+    font-weight: 700;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--vermilion);
+    outline-offset: 2px;
+  }
+
+  @media print {
+    html:root {
+      background: none;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+/* mudda-theme for Tailwind CSS v4 apps, with or without daisyUI 5. tailwindcss-rails finds this file
+   and writes app/assets/builds/tailwind/mudda_theme.css to import it; the app imports that after
+   its daisyUI @plugin, so the mappings below override the daisyUI theme's own values. */
+
+@import "../../stylesheets/mudda_theme/tokens.css";
+@import "../../stylesheets/mudda_theme/fonts.css";
+@import "../../stylesheets/mudda_theme/base.css";
+
+@theme {
+  --font-sans: var(--face-body);
+  --font-display: var(--face-display);
+
+  /* The look is flat: surfaces are told apart by hairlines, never shadows. */
+  --shadow-2xs: none;
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+  --shadow-2xl: none;
+}
+
+/* daisyUI's roles in manuscript terms. Content colours are the paper, so they flip with dark.css. */
+:root {
+  --color-base-100: var(--paper);
+  --color-base-200: var(--paper-200);
+  --color-base-300: var(--paper-300);
+  --color-base-content: var(--ink);
+  --color-primary: var(--ink);
+  --color-primary-content: var(--paper);
+  --color-secondary: var(--brass);
+  --color-secondary-content: var(--paper);
+  --color-accent: var(--vermilion);
+  --color-accent-content: var(--paper);
+  --color-neutral: var(--ink-muted);
+  --color-neutral-content: var(--paper);
+  --color-info: var(--ink-muted);
+  --color-info-content: var(--paper);
+  --color-success: var(--ink);
+  --color-success-content: var(--paper);
+  --color-warning: var(--brass);
+  --color-warning-content: var(--paper);
+  --color-error: var(--vermilion);
+  --color-error-content: var(--paper);
+
+  --radius-selector: var(--corner);
+  --radius-field: var(--corner);
+  --radius-box: var(--corner);
+
+  /* daisyUI's page colour, so its own effects (a modal's dimming) tint the paper. */
+  --root-bg: var(--paper);
+}
+
+@layer base {
+  body {
+    background: none;
+  }
+}
+
+/* daisyUI's components sit in the utilities layer, so the hairline rule lives there too. */
+@layer utilities {
+  .card,
+  .modal-box,
+  .dropdown-content,
+  .alert {
+    border: 1px solid var(--hairline);
+  }
+}

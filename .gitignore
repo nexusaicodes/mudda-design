@@ -1,0 +1,4 @@
+/Gemfile.lock
+/pkg/
+/test/dummy/tmp/
+/test/dummy/public/assets/

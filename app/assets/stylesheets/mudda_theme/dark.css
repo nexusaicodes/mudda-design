@@ -1,0 +1,34 @@
+/* mudda-theme: the manuscript look, dark. Cream ink on night-navy paper, with brass and vermilion
+   lifted for contrast. It redefines tokens.css's names, so load it after tokens.css; an app that
+   never loads it stays light.
+
+   It follows the system setting unless the page pins a scheme with <html data-theme="light|dark">.
+   Both blocks below hold the same values. This file is self-contained and doubles as the static
+   copy for public/ pages. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --paper: #0e1830;
+    --paper-200: #15233f;
+    --paper-300: #1c2c4d;
+    --ink: #efe4cb;
+    --ink-muted: #a7b0c2;
+    --brass: #c9a56a;
+    --vermilion: #e5583b;
+    --hairline: rgb(201 165 106 / 0.22);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper: #0e1830;
+  --paper-200: #15233f;
+  --paper-300: #1c2c4d;
+  --ink: #efe4cb;
+  --ink-muted: #a7b0c2;
+  --brass: #c9a56a;
+  --vermilion: #e5583b;
+  --hairline: rgb(201 165 106 / 0.22);
+}
