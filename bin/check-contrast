@@ -15,14 +15,15 @@ def contrast(a, b)
 end
 
 # [foreground, background, minimum]. Ink and slate carry text, so they need 4.5:1 on every surface.
-# Brass and vermilion are accents: large labels, badges, lane marks and focus rings, held to the
+# Paper is text on the filled roles (buttons, badges, alerts), so it needs 4.5:1 on each fill. Brass
+# and vermilion are also accents on paper: large labels, lane marks and focus rings, held to the
 # 3:1 that large text and UI components need.
 PAIRS = [
   [ :ink, :paper, 4.5 ], [ :ink, :paper_200, 4.5 ], [ :ink, :paper_300, 4.5 ],
   [ :ink_muted, :paper, 4.5 ], [ :ink_muted, :paper_200, 4.5 ], [ :ink_muted, :paper_300, 4.5 ],
-  [ :paper, :ink, 4.5 ], [ :paper, :ink_muted, 4.5 ],
-  [ :brass, :paper, 3.0 ], [ :brass, :paper_200, 3.0 ], [ :paper, :brass, 3.0 ],
-  [ :vermilion, :paper, 3.0 ], [ :vermilion, :paper_200, 3.0 ], [ :paper, :vermilion, 3.0 ]
+  [ :paper, :ink, 4.5 ], [ :paper, :ink_muted, 4.5 ], [ :paper, :brass_fill, 4.5 ], [ :paper, :vermilion, 4.5 ],
+  [ :brass, :paper, 3.0 ], [ :brass, :paper_200, 3.0 ],
+  [ :vermilion, :paper, 3.0 ], [ :vermilion, :paper_200, 3.0 ]
 ].freeze
 
 failures = 0

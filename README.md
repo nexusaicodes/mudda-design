@@ -11,7 +11,7 @@ copying anything, and a tailwindcss-rails app gets a Tailwind/daisyUI adapter. I
 
 ```ruby
 # Gemfile
-gem "mudda-theme", github: "nexusaicodes/mudda-theme", tag: "v0.1.0"
+gem "mudda-theme", github: "nexusaicodes/mudda-theme", tag: "v0.1.1"
 ```
 
 To upgrade, change the tag and run `bundle update mudda-theme`.
@@ -36,16 +36,18 @@ To upgrade, change the tag and run `bundle update mudda-theme`.
 | `--paper-300`  | `#dfd0b0`               | `#1c2c4d`                  | Higher surface, pressed state         |
 | `--ink`        | `#1b2a4a`               | `#efe4cb`                  | Text, primary fills                   |
 | `--ink-muted`  | `#46536e`               | `#a7b0c2`                  | Quieter text                          |
-| `--brass`      | `#8c6a2e`               | `#c9a56a`                  | Large labels, badges, marks           |
+| `--brass`      | `#8c6a2e`               | `#c9a56a`                  | Large labels, marks                   |
+| `--brass-fill` | `#7f5f28`               | `#c9a56a`                  | Brass surfaces under paper-coloured text (secondary, warning) |
 | `--vermilion`  | `#b3341c`               | `#e5583b`                  | The accent: focus, alerts, marks      |
 | `--hairline`   | `rgb(27 42 74 / 0.2)`   | `rgb(201 165 106 / 0.22)`  | 1px rules between surfaces            |
 | `--face-body`  | IBM Plex Sans, IBM Plex Sans Arabic, system stack |   | Body text                        |
 | `--face-display` | Amiri, Noto Naskh Arabic, Georgia, serif |          | Headings                              |
 | `--corner`     | `3px`                   |                            | Corner radius                         |
 
-Ink and slate pass WCAG AA (4.5:1) on every paper in both schemes. Brass and vermilion pass the
-3:1 for large text and UI marks, so keep them off small body text. `bundle exec rake contrast`
-checks every pair.
+Ink and slate pass WCAG AA (4.5:1) on every paper in both schemes, and paper text passes it on
+every fill (ink, slate, brass-fill, vermilion). Brass and vermilion as text on paper pass the 3:1
+for large text and UI marks, so keep them off small body text. `bundle exec rake contrast` checks
+every pair.
 
 ## Use it in a Propshaft app (plain CSS)
 
@@ -68,11 +70,16 @@ on every `tailwindcss:build` and `tailwindcss:watch`. Import that file **after**
 /* your own CSS */
 ```
 
-The adapter brings in tokens, fonts and base. It also maps `--font-sans` and `--font-display`, sets every
-Tailwind shadow to `none`, maps daisyUI's roles (base, primary, secondary, accent, neutral, info, success,
-warning, error, the radii) to the tokens, and draws a hairline round `.card`, `.modal-box`,
-`.dropdown-content` and `.alert`. For dark mode, also link `mudda_theme/dark` with
+The adapter brings in tokens, fonts and base. It also maps `--font-sans` and `--font-display`, makes
+every themed Tailwind shadow a transparent zero shadow (so rings still draw), maps daisyUI's roles
+(base, primary, secondary, accent, neutral, info, success, warning, error, the radii) to the tokens,
+and draws a hairline round `.card`, `.modal-box`, `.dropdown-content` and a plain `.alert`.
+daisyUI's bordered variants (`card-border`, `card-dash`, the alert colours and styles) and the
+app's own border utilities keep their borders. For dark mode, also link `mudda_theme/dark` with
 `stylesheet_link_tag`.
+
+The engine keeps `app/assets/tailwind/` out of the Propshaft load path, so the adapter is never
+published as a stylesheet of its own.
 
 ## Outside the asset pipeline
 

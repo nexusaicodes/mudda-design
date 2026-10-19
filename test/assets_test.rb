@@ -36,4 +36,8 @@ class AssetsTest < Minitest::Test
     assert_equal "mudda_theme", engine.engine_name
     assert engine.root.join("app/assets/tailwind/mudda_theme/engine.css").file?
   end
+
+  def test_tailwind_source_is_not_published
+    assert_nil assembly.load_path.find("mudda_theme/engine.css")
+  end
 end

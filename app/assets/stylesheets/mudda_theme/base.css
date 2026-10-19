@@ -3,7 +3,7 @@
 @layer base {
   /* html:root outranks a component kit's own :root background. */
   html:root {
-    background: var(--paper);
+    background-color: var(--paper);
     color: var(--ink);
   }
 

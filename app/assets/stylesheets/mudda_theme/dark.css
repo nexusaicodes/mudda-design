@@ -15,6 +15,7 @@
     --ink: #efe4cb;
     --ink-muted: #a7b0c2;
     --brass: #c9a56a;
+  --brass-fill: #c9a56a;
     --vermilion: #e5583b;
     --hairline: rgb(201 165 106 / 0.22);
   }
@@ -29,6 +30,7 @@
   --ink: #efe4cb;
   --ink-muted: #a7b0c2;
   --brass: #c9a56a;
+  --brass-fill: #c9a56a;
   --vermilion: #e5583b;
   --hairline: rgb(201 165 106 / 0.22);
 }

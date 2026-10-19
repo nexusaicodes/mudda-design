@@ -10,14 +10,16 @@
   --font-sans: var(--face-body);
   --font-display: var(--face-display);
 
-  /* The look is flat: surfaces are told apart by hairlines, never shadows. */
-  --shadow-2xs: none;
-  --shadow-xs: none;
-  --shadow-sm: none;
-  --shadow-md: none;
-  --shadow-lg: none;
-  --shadow-xl: none;
-  --shadow-2xl: none;
+  /* The look is flat: surfaces are told apart by hairlines, never shadows. Each shadow is a
+     transparent zero shadow rather than none, because Tailwind lists it beside the ring in one
+     box-shadow, where none would void the ring too. */
+  --shadow-2xs: 0 0 #0000;
+  --shadow-xs: 0 0 #0000;
+  --shadow-sm: 0 0 #0000;
+  --shadow-md: 0 0 #0000;
+  --shadow-lg: 0 0 #0000;
+  --shadow-xl: 0 0 #0000;
+  --shadow-2xl: 0 0 #0000;
 }
 
 /* daisyUI's roles in manuscript terms. Content colours are the paper, so they flip with dark.css. */
@@ -28,7 +30,7 @@
   --color-base-content: var(--ink);
   --color-primary: var(--ink);
   --color-primary-content: var(--paper);
-  --color-secondary: var(--brass);
+  --color-secondary: var(--brass-fill);
   --color-secondary-content: var(--paper);
   --color-accent: var(--vermilion);
   --color-accent-content: var(--paper);
@@ -38,7 +40,7 @@
   --color-info-content: var(--paper);
   --color-success: var(--ink);
   --color-success-content: var(--paper);
-  --color-warning: var(--brass);
+  --color-warning: var(--brass-fill);
   --color-warning-content: var(--paper);
   --color-error: var(--vermilion);
   --color-error-content: var(--paper);
@@ -46,23 +48,31 @@
   --radius-selector: var(--corner);
   --radius-field: var(--corner);
   --radius-box: var(--corner);
-
-  /* daisyUI's page colour, so its own effects (a modal's dimming) tint the paper. */
-  --root-bg: var(--paper);
 }
 
 @layer base {
+  /* daisyUI's page colour is base-100, which is the paper. While a modal locks the scroll, daisyUI
+     darkens it through --page-scroll-bg; this keeps that over base.css's flat paper. */
+  html:root {
+    background-color: var(--page-scroll-bg, var(--root-bg, var(--paper)));
+  }
+
   body {
     background: none;
   }
 }
 
-/* daisyUI's components sit in the utilities layer, so the hairline rule lives there too. */
+/* The hairline round daisyUI's plain surfaces. daisyUI keeps its components in sublayers of the
+   utilities layer, which lose to any rule placed in utilities directly, so the variants that bring
+   their own border (card-border, card-dash, and an alert's colour and style variants) are left
+   out by name. :where() keeps the rule at zero specificity, so the app's border utilities win. An
+   alert's border colour goes through daisyUI's own variable. */
 @layer utilities {
-  .card,
-  .modal-box,
-  .dropdown-content,
-  .alert {
+  :where(.card:not(.card-border, .card-dash), .modal-box, .dropdown-content) {
     border: 1px solid var(--hairline);
+  }
+
+  :where(.alert:not(.alert-info, .alert-success, .alert-warning, .alert-error, .alert-soft, .alert-outline, .alert-dash)) {
+    --alert-border-color: var(--hairline);
   }
 }

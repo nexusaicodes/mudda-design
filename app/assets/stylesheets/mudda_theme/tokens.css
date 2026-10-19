@@ -1,5 +1,7 @@
 /* mudda-theme: the manuscript look, light. Navy ink on cream paper, slate for quieter text, brass
-   for small labels, vermilion as the one accent. Surfaces are flat and told apart by hairlines;
+   for labels and marks, vermilion as the one accent. Brass is a 3:1 accent on paper, so a surface
+   that carries paper-coloured text (a secondary button, a warning badge) uses the deeper
+   --brass-fill. Surfaces are flat and told apart by hairlines;
    corners are near-square.
 
    Tokens are named by role, so dark.css flips every one of them under the same names. This file
@@ -13,6 +15,7 @@
   --ink: #1b2a4a;
   --ink-muted: #46536e;
   --brass: #8c6a2e;
+  --brass-fill: #7f5f28;
   --vermilion: #b3341c;
   --hairline: rgb(27 42 74 / 0.2);
 
