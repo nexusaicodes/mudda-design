@@ -1,0 +1,37 @@
+{
+  "name": "mudda-theme",
+  "version": "0.2.0",
+  "description": "Mudda's design system: tokens, fonts, building blocks and brand assets shared by every Mudda app.",
+  "license": "MIT",
+  "type": "module",
+  "repository": "github:nexusaicodes/mudda-design",
+  "exports": {
+    "./tokens.css": "./app/assets/stylesheets/mudda_theme/tokens.css",
+    "./dark.css": "./app/assets/stylesheets/mudda_theme/dark.css",
+    "./scale.css": "./app/assets/stylesheets/mudda_theme/scale.css",
+    "./base.css": "./app/assets/stylesheets/mudda_theme/base.css",
+    "./components.css": "./app/assets/stylesheets/mudda_theme/components.css",
+    "./fonts.css": "./web/fonts.css",
+    "./tokens.json": "./web/tokens.json",
+    "./images/*": "./app/assets/images/mudda_theme/*"
+  },
+  "files": [
+    "app/assets/stylesheets",
+    "app/assets/fonts",
+    "app/assets/images",
+    "web",
+    "licenses",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "icons": "node scripts/icons.mjs",
+    "site": "node scripts/site.mjs",
+    "screenshots": "node scripts/screenshots.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.48.2",
+    "style-dictionary": "5.6.1"
+  }
+}

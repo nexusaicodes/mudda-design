@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="76 120 360 272" role="img" aria-label="mudda">
+  <g fill="#1b2a4a">
+    <rect x="76" y="120" width="56" height="272" rx="28"/>
+    <rect x="152" y="120" width="56" height="200" rx="28"/>
+    <rect x="228" y="120" width="56" height="152" rx="28"/>
+    <rect x="304" y="120" width="56" height="232" rx="28"/>
+    <rect x="380" y="120" width="56" height="112" rx="28"/>
+  </g>
+</svg>

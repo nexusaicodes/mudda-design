@@ -1,0 +1,24 @@
+{
+  "light": {
+    "paper": "#f1e6ce",
+    "paper-200": "#e9dcc0",
+    "paper-300": "#dfd0b0",
+    "ink": "#1b2a4a",
+    "ink-muted": "#46536e",
+    "brass": "#8c6a2e",
+    "brass-fill": "#7f5f28",
+    "vermilion": "#b3341c",
+    "hairline": "rgb(27 42 74 / 0.2)"
+  },
+  "dark": {
+    "paper": "#0e1830",
+    "paper-200": "#15233f",
+    "paper-300": "#1c2c4d",
+    "ink": "#efe4cb",
+    "ink-muted": "#a7b0c2",
+    "brass": "#c9a56a",
+    "brass-fill": "#c9a56a",
+    "vermilion": "#e5583b",
+    "hairline": "rgb(201 165 106 / 0.22)"
+  }
+}

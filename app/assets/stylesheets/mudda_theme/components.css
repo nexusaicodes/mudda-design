@@ -1,0 +1,42 @@
+/* mudda-theme: building blocks for plain-CSS apps. Tailwind apps get the same look from daisyUI
+   through the adapter (btn, btn-outline, btn-sm) and leave this file out.
+
+   Needs tokens.css and scale.css. It is unlayered, like the app CSS that follows it, so these
+   class rules outrank an app's element rules (a { color }) by specificity alone.
+
+   Actions come in three levels: .button for the one main action, .button.is-outline beside it,
+   and .link-arrow for a quieter way on. .is-compact fits a button into a bar. */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg);
+  border: var(--rule-hair) solid var(--ink);
+  border-radius: var(--corner);
+  background: var(--ink);
+  color: var(--paper);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+}
+.button:hover { background: var(--ink-muted); border-color: var(--ink-muted); color: var(--paper); }
+.button:active { transform: translateY(1px); }
+.button.is-compact { padding: var(--space-xs) var(--space-md); font-size: var(--text-sm); }
+.button.is-outline { background: transparent; color: var(--ink); }
+.button.is-outline:hover { background: transparent; border-color: var(--ink-muted); color: var(--ink-muted); }
+.button:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+.link-arrow {
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+  border-bottom: var(--rule-hair) solid currentColor;
+  padding-bottom: var(--space-3xs);
+}
+.link-arrow::after { content: " →"; }
+.link-arrow:dir(rtl)::after { content: " ←"; }

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mudda design system</title>
+  <meta name="description" content="Every token, building block and brand asset in Mudda's design system, in light and dark, English and Arabic.">
+  <link rel="icon" href="../app/assets/images/mudda_theme/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../web/fonts.css">
+  <link rel="stylesheet" href="../app/assets/stylesheets/mudda_theme/tokens.css">
+  <link rel="stylesheet" href="../app/assets/stylesheets/mudda_theme/dark.css">
+  <link rel="stylesheet" href="../app/assets/stylesheets/mudda_theme/scale.css">
+  <link rel="stylesheet" href="../app/assets/stylesheets/mudda_theme/base.css">
+  <link rel="stylesheet" href="../app/assets/stylesheets/mudda_theme/components.css">
+  <link rel="stylesheet" href="catalog.css">
+  <script src="catalog.js" type="module"></script>
+</head>
+<body>
+  <header class="top">
+    <img class="top-mark" src="../app/assets/images/mudda_theme/wordmark.svg" alt="mudda" data-scheme-src="../app/assets/images/mudda_theme/wordmark-on-dark.svg">
+    <span class="top-title">design system <span class="version" data-version></span></span>
+    <nav class="switches" aria-label="View">
+      <fieldset>
+        <legend>Scheme</legend>
+        <label><input type="radio" name="theme" value="system" checked> System</label>
+        <label><input type="radio" name="theme" value="light"> Light</label>
+        <label><input type="radio" name="theme" value="dark"> Dark</label>
+      </fieldset>
+      <fieldset>
+        <legend>Direction</legend>
+        <label><input type="radio" name="dir" value="ltr" checked> LTR</label>
+        <label><input type="radio" name="dir" value="rtl"> RTL</label>
+      </fieldset>
+    </nav>
+  </header>
+
+  <main>
+    <p class="intro">
+      What every Mudda app shares, rendered from the system's own files. Values come from
+      <code>tokens/*.json</code>; read <a href="https://github.com/nexusaicodes/mudda-design/blob/main/VISION.md">VISION.md</a>
+      for why, <a href="https://github.com/nexusaicodes/mudda-design/blob/main/DESIGN.md">DESIGN.md</a> for the rules, and
+      <a href="https://github.com/nexusaicodes/mudda-design/blob/main/INVENTORY.md">INVENTORY.md</a> for where the apps still differ.
+    </p>
+
+    <section>
+      <h2>Colour roles</h2>
+      <p class="note">Apps use these names. Each has a light and a dark value; the page shows the scheme in use.</p>
+      <div class="swatches" data-swatches="semantic"></div>
+    </section>
+
+    <section>
+      <h2>Palette</h2>
+      <p class="note">The primitives the roles point at. Apps never use them directly.</p>
+      <div class="swatches is-small" data-swatches="primitive"></div>
+    </section>
+
+    <section>
+      <h2>Type</h2>
+      <div class="faces">
+        <div class="face">
+          <p class="label">Display: <code>--face-display</code></p>
+          <p class="face-sample" style="font-family: var(--face-display); font-weight: 700">Out of your head, onto the board</p>
+          <p class="face-sample" lang="ar" dir="rtl" style="font-family: var(--face-display); font-weight: 700">من رأسك إلى اللوحة</p>
+        </div>
+        <div class="face">
+          <p class="label">Body: <code>--face-body</code></p>
+          <p class="face-sample" style="font-family: var(--face-body)">A board for you and your AI.</p>
+          <p class="face-sample" lang="ar" dir="rtl" style="font-family: var(--face-body)">لوحة لك ولذكائك الاصطناعي.</p>
+        </div>
+        <div class="face">
+          <p class="label">Mono: <code>--face-mono</code></p>
+          <p class="face-sample" style="font-family: var(--face-mono)">GET /boards/12/cards/40.json</p>
+        </div>
+      </div>
+      <h3>Scale <span class="aside">scale.css, plain-CSS apps</span></h3>
+      <div class="type-scale" data-scale="text"></div>
+    </section>
+
+    <section>
+      <h2>Space</h2>
+      <div class="space-scale" data-scale="space"></div>
+    </section>
+
+    <section>
+      <h2>Shape, rules and focus</h2>
+      <div class="shapes">
+        <figure><div class="shape-demo" style="border-radius: var(--corner)"></div><figcaption><code>--corner</code> <span data-value="corner"></span></figcaption></figure>
+        <figure><div class="shape-demo is-hairline"></div><figcaption><code>--hairline</code>, <code>--rule-hair</code></figcaption></figure>
+        <figure><div class="shape-demo is-focus"></div><figcaption><code>--focus-ring-*</code>: <span data-value="focus-ring-width"></span>, offset <span data-value="focus-ring-offset"></span></figcaption></figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>Motion</h2>
+      <div class="motion" data-scale="motion"></div>
+    </section>
+
+    <section>
+      <h2>Actions</h2>
+      <p class="note">components.css, for plain-CSS apps. Tailwind apps use daisyUI's <code>btn</code>, mapped to the same tokens.</p>
+      <div class="actions-demo" lang="en" dir="ltr">
+        <a class="button" href="#">Get started</a>
+        <a class="button is-outline" href="#">Connect your AI</a>
+        <a class="link-arrow" href="#">See how to connect</a>
+        <button class="button is-compact" type="button">Sign up</button>
+        <button class="button" type="button" disabled>Disabled</button>
+      </div>
+      <div class="actions-demo" lang="ar" dir="rtl">
+        <a class="button" href="#">ابدأ مجانًا</a>
+        <a class="button is-outline" href="#">انتقل إلى Premium</a>
+        <a class="link-arrow" href="#">اعرف كيف تربط</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Brand</h2>
+      <div class="brand">
+        <figure class="on-paper"><img src="../app/assets/images/mudda_theme/wordmark.svg" alt="" height="48"><figcaption>wordmark.svg</figcaption></figure>
+        <figure class="on-night"><img src="../app/assets/images/mudda_theme/wordmark-on-dark.svg" alt="" height="48"><figcaption>wordmark-on-dark.svg</figcaption></figure>
+        <figure class="on-paper"><img src="../app/assets/images/mudda_theme/logo.svg" alt="" height="36"><figcaption>logo.svg</figcaption></figure>
+        <figure><img src="../app/assets/images/mudda_theme/mark.svg" alt="" height="72"><figcaption>mark.svg</figcaption></figure>
+        <figure><img class="is-masked" src="../app/assets/images/mudda_theme/mark-maskable.svg" alt="" height="72"><figcaption>mark-maskable.svg</figcaption></figure>
+        <figure><img src="../app/assets/images/mudda_theme/favicon.ico" alt="" height="32"><figcaption>favicon.ico</figcaption></figure>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

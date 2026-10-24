@@ -4,8 +4,8 @@ Gem::Specification.new do |spec|
   spec.name = "mudda-theme"
   spec.version = MuddaTheme::VERSION
   spec.authors = [ "Nexus AI" ]
-  spec.summary = "The manuscript look shared by Mudda's apps: tokens, fonts and a daisyUI adapter."
-  spec.homepage = "https://github.com/nexusaicodes/mudda-theme"
+  spec.summary = "Mudda's design system for Ruby apps: tokens, fonts, building blocks, brand assets and a daisyUI adapter."
+  spec.homepage = "https://github.com/nexusaicodes/mudda-design"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.2"
 

@@ -1,11 +1,12 @@
 /* mudda-theme: the manuscript look, light. Navy ink on cream paper, slate for quieter text, brass
    for labels and marks, vermilion as the one accent. Brass is a 3:1 accent on paper, so a surface
    that carries paper-coloured text (a secondary button, a warning badge) uses the deeper
-   --brass-fill. Surfaces are flat and told apart by hairlines;
-   corners are near-square.
+   --brass-fill. Surfaces are flat and told apart by hairlines; corners are near-square.
 
-   Tokens are named by role, so dark.css flips every one of them under the same names. This file
-   is self-contained (no url(), no layers) and doubles as the static copy for public/ pages. */
+   Tokens are named by role, so dark.css flips every colour under the same names. This file is
+   self-contained (no url(), no layers) and doubles as the static copy for public/ pages.
+
+   Generated from tokens/*.json by scripts/build.mjs: edit the JSON, then run `npm run build`. */
 :root {
   color-scheme: light;
 
@@ -21,6 +22,11 @@
 
   --face-body: "IBM Plex Sans", "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --face-display: Amiri, "Noto Naskh Arabic", Georgia, serif;
+  --face-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --corner: 3px;
+
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring-color: var(--vermilion);
 }

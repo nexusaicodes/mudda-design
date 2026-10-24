@@ -1,24 +1,22 @@
-module MuddaTheme
-  # The colour tokens as Ruby values, for places CSS variables can't reach: inline mailer styles,
-  # generated SVGs. They are read from tokens.css and dark.css, so the CSS stays the one source.
-  module Palette
-    TOKEN = /--(?<name>[a-z0-9-]+):\s*(?<value>[^;]+);/
+require "json"
 
-    def self.read(file, scope = nil)
-      css = File.read(File.expand_path("../../app/assets/stylesheets/mudda_theme/#{file}", __dir__))
-      if scope
-        css = css[/#{Regexp.escape(scope)}\s*\{(.*?)\}/m, 1] or
-          raise ArgumentError, "mudda-theme: #{file} has no #{scope} { ... } block"
-      end
-      css.scan(TOKEN).to_h { |name, value| [ name.tr("-", "_").to_sym, value.strip ] }
-        .reject { |name, _| name.start_with?("face_") || name == :corner }
+module MuddaTheme
+  # The colour roles as Ruby values, for places CSS variables can't reach: inline mailer styles,
+  # generated SVGs. scripts/build.mjs writes palette.json from tokens/*.json, the same source as
+  # tokens.css and dark.css.
+  module Palette
+    FILE = File.expand_path("palette.json", __dir__)
+
+    def self.read(scheme)
+      JSON.parse(File.read(FILE)).fetch(scheme.to_s) { raise ArgumentError, "mudda-theme: palette.json has no #{scheme} scheme" }
+        .to_h { |name, value| [ name.tr("-", "_").to_sym, value ] }
         .freeze
     end
   end
 
   PALETTE = {
-    light: Palette.read("tokens.css"),
-    dark: Palette.read("dark.css", ':root[data-theme="dark"]')
+    light: Palette.read(:light),
+    dark: Palette.read(:dark)
   }.freeze
 
   # The four inks that mark the paper, as upper-case hex: navy, slate, brass, vermilion. For avatar

@@ -1,0 +1,40 @@
+{
+  "$description": "Type, spacing, rule and motion scales, emitted to scale.css for plain-CSS apps. Tailwind apps keep Tailwind's own scales, whose variable names these would clash with.",
+  "text": {
+    "$type": "dimension",
+    "xs": { "$value": "0.8rem" },
+    "sm": { "$value": "0.9rem" },
+    "base": { "$value": "1.0625rem", "$description": "Body text" },
+    "md": { "$value": "1.25rem" },
+    "lg": { "$value": "1.5625rem" },
+    "xl": { "$value": "2.25rem" },
+    "display": { "$value": "clamp(2.5rem, 4.6vw + 1rem, 5rem)", "$description": "Page titles; grows with the window" }
+  },
+  "space": {
+    "$type": "dimension",
+    "3xs": { "$value": "0.125rem" },
+    "2xs": { "$value": "0.25rem" },
+    "xs": { "$value": "0.5rem" },
+    "sm": { "$value": "0.75rem" },
+    "md": { "$value": "1rem" },
+    "lg": { "$value": "1.5rem" },
+    "xl": { "$value": "2.5rem" },
+    "2xl": { "$value": "4rem" },
+    "3xl": { "$value": "6rem" },
+    "4xl": { "$value": "9rem" }
+  },
+  "rule": {
+    "hair": { "$type": "dimension", "$value": "1px", "$description": "Hairline width" }
+  },
+  "ease": {
+    "$type": "cubicBezier",
+    "out": { "$value": [0.16, 1, 0.3, 1] },
+    "in": { "$value": [0.7, 0, 0.84, 0] },
+    "in-out": { "$value": [0.65, 0, 0.35, 1] }
+  },
+  "dur": {
+    "$type": "duration",
+    "micro": { "$value": "120ms", "$description": "Hovers, presses" },
+    "short": { "$value": "220ms", "$description": "Menus, reveals" }
+  }
+}

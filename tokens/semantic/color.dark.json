@@ -1,0 +1,15 @@
+{
+  "$description": "Colour roles in the dark scheme: cream ink on night-navy paper, brass and vermilion lifted for contrast.",
+  "color": {
+    "$type": "color",
+    "paper": { "$value": "{palette.night.900}", "$description": "Page background" },
+    "paper-200": { "$value": "{palette.night.800}", "$description": "Raised surface" },
+    "paper-300": { "$value": "{palette.night.700}", "$description": "Higher surface, pressed state" },
+    "ink": { "$value": "{palette.cream.50}", "$description": "Text, primary fills" },
+    "ink-muted": { "$value": "{palette.slate.300}", "$description": "Quieter text" },
+    "brass": { "$value": "{palette.brass.300}", "$description": "Large labels, marks" },
+    "brass-fill": { "$value": "{palette.brass.300}", "$description": "Brass surfaces under paper-coloured text" },
+    "vermilion": { "$value": "{palette.vermilion.400}", "$description": "The one accent: focus, alerts, marks" },
+    "hairline": { "$value": "rgb(201 165 106 / 0.22)", "$description": "1px rules between surfaces: brass at 22%" }
+  }
+}

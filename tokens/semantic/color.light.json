@@ -1,0 +1,15 @@
+{
+  "$description": "Colour roles in the light scheme. color.dark.json gives every one of them a dark value under the same name.",
+  "color": {
+    "$type": "color",
+    "paper": { "$value": "{palette.cream.100}", "$description": "Page background" },
+    "paper-200": { "$value": "{palette.cream.200}", "$description": "Raised surface" },
+    "paper-300": { "$value": "{palette.cream.300}", "$description": "Higher surface, pressed state" },
+    "ink": { "$value": "{palette.navy.900}", "$description": "Text, primary fills" },
+    "ink-muted": { "$value": "{palette.slate.600}", "$description": "Quieter text" },
+    "brass": { "$value": "{palette.brass.500}", "$description": "Large labels, marks (3:1 on paper: never small text)" },
+    "brass-fill": { "$value": "{palette.brass.600}", "$description": "Brass surfaces under paper-coloured text (secondary, warning)" },
+    "vermilion": { "$value": "{palette.vermilion.600}", "$description": "The one accent: focus, alerts, marks" },
+    "hairline": { "$value": "rgb(27 42 74 / 0.2)", "$description": "1px rules between surfaces: ink at 20%" }
+  }
+}

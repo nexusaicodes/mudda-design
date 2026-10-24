@@ -18,8 +18,14 @@ class AssetsTest < Minitest::Test
   end
 
   def test_stylesheets_resolve
-    %w[ tokens dark fonts base ].each do |name|
+    %w[ tokens dark scale fonts base components ].each do |name|
       assert assembly.load_path.find("mudda_theme/#{name}.css"), "mudda_theme/#{name}.css"
+    end
+  end
+
+  def test_brand_images_resolve
+    %w[ wordmark.svg wordmark-on-dark.svg logo.svg mark.svg favicon.ico app-icon-192.png ].each do |file|
+      assert assembly.load_path.find("mudda_theme/#{file}"), "mudda_theme/#{file}"
     end
   end
 
@@ -27,7 +33,7 @@ class AssetsTest < Minitest::Test
     css = assembly.compilers.compile(assembly.load_path.find("mudda_theme/fonts.css"))
     urls = css.scan(/url\("([^"]+)"\)/).flatten
 
-    assert_equal 18, urls.size
+    assert_equal 19, urls.size
     urls.each { |url| assert_match %r{\A/assets/mudda_theme/[a-z0-9-]+-[a-zA-Z0-9]{8}\.woff2\z}, url }
   end
 

@@ -1,0 +1,33 @@
+{
+  "$description": "The palette by name. Apps never use these directly: semantic tokens point at them.",
+  "palette": {
+    "$type": "color",
+    "cream": {
+      "50": { "$value": "#efe4cb", "$description": "Cream ink on night paper" },
+      "100": { "$value": "#f1e6ce", "$description": "Paper" },
+      "200": { "$value": "#e9dcc0" },
+      "300": { "$value": "#dfd0b0" }
+    },
+    "navy": {
+      "900": { "$value": "#1b2a4a", "$description": "Ink" }
+    },
+    "night": {
+      "700": { "$value": "#1c2c4d" },
+      "800": { "$value": "#15233f" },
+      "900": { "$value": "#0e1830", "$description": "Night paper" }
+    },
+    "slate": {
+      "300": { "$value": "#a7b0c2" },
+      "600": { "$value": "#46536e" }
+    },
+    "brass": {
+      "300": { "$value": "#c9a56a" },
+      "500": { "$value": "#8c6a2e" },
+      "600": { "$value": "#7f5f28" }
+    },
+    "vermilion": {
+      "400": { "$value": "#e5583b" },
+      "600": { "$value": "#b3341c" }
+    }
+  }
+}

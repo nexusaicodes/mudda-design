@@ -17,3 +17,26 @@ jobs:
         with:
           bundler-cache: true
       - run: bundle exec rake
+
+  # The generated files must match tokens/*.json, and the catalog must render in every scheme and
+  # direction. The screenshots are attached to the run, for reviewing a change by eye.
+  tokens:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Generated files are up to date
+        run: |
+          npm run build
+          git diff --exit-code || { echo "::error::Run npm run build and commit the generated files."; exit 1; }
+      - run: npx playwright install --with-deps chromium
+      - run: npm run site
+      - run: npm run screenshots
+      - uses: actions/upload-artifact@v4
+        with:
+          name: catalog-screenshots
+          path: screenshots/
